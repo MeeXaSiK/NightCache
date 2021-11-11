@@ -1,46 +1,65 @@
-﻿using System.Collections.Generic;
-using NTC.Global.System;
+﻿using NTC.Global.System;
+using UnityEngine;
 
 namespace NTC.Global.Cache
 {
+    [DisallowMultipleComponent]
     public sealed class NightCacheInstallMachine : MonoInstallable
     {
-        private readonly List<INightCached> systems = new List<INightCached>(8);
-
+        private INightCached[] components;
+        
         protected override void OnFirstEnable()
-        {
-            InstallNewSystems();
+        { 
+            InstallComponents();
         }
 
-        private void InstallNewSystems()
+        private void InstallComponents()
         {
-            GetComponents(systems); InitializeSystems();
-            foreach (var system in systems) NightCacheCore.AddSystem(system);
+            FindComponents();
+            
+            InitializeComponents();
+            
+            AddComponents();
+        }
+
+        private void FindComponents()
+        {
+            components = GetComponents<INightCached>();
         }
         
-        private void RemoveSystems()
+        private void AddComponents()
         {
-            foreach (var system in systems) NightCacheCore.RemoveSystem(system);
+            foreach (var component in components)
+                NightCacheCore.AddSystem(component);
         }
         
-        private void InitializeSystems()
+        private void RemoveComponents()
         {
-            foreach (var system in systems) if (system is INightInit initSystem) initSystem.Init();
+            foreach (var component in components)
+                NightCacheCore.RemoveSystem(component);
+        }
+        
+        private void InitializeComponents()
+        {
+            foreach (var component in components)
+                if (component is INightInit initSystem) initSystem.Init();
         }
 
         protected override void OnLateEnable()
         {
-            foreach (var system in systems) system.SetNightCacheSystemActive(true);
+            foreach (var component in components)
+                component.EnableComponent();
         }
 
         private void OnDisable()
         {
-            foreach (var system in systems) system.SetNightCacheSystemActive(false);
+            foreach (var component in components)
+                component.DisableComponent();
         }
 
         private void OnDestroy()
         {
-            RemoveSystems();
+            RemoveComponents();
         }
     }
 }

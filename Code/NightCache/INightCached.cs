@@ -3,7 +3,8 @@
     public interface INightCached
     {
         public bool IsActive();
-        public void SetNightCacheSystemActive(bool status);
+        public void EnableComponent();
+        public void DisableComponent();
     }
 
     public interface INightInit : INightCached

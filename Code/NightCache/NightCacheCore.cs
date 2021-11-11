@@ -14,9 +14,9 @@ namespace NTC.Global.Cache
         private static int fixedRunCount;
         private static int lateRunCount;
         
-        public static Action OnRun;
-        public static Action OnFixedRun;
-        public static Action OnLateRun;
+        public static event Action OnRun;
+        public static event Action OnFixedRun;
+        public static event Action OnLateRun;
 
         public static void AddSystem(INightCached nightCached)
         {
