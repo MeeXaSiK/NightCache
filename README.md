@@ -75,7 +75,7 @@ public class UnitMovement : NightCache, INightInit, INightRun
 
 | Interface | Identical |
 | ------ | ------ |
-| INightRun : void Init() | void Start() |
+| INightInit : void Init() | void Start() |
 | INightRun : void Run() | void Update() |
 | INightFixedRun : void FixedRun() | void FixedUpdate() |
 | INightLateRun : void LateRun() | void LateUpdate() |
