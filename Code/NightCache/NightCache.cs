@@ -1,5 +1,4 @@
-﻿#define NIGHT_CACHE
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace NTC.Global.Cache
 {
