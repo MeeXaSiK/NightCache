@@ -14,12 +14,18 @@ namespace NTC.Global.Cache
 
         public void EnableComponent()
         {
+            if (this == null)
+                return;
+            
             enabled = true;
             systemIsActiveInScene = true;
         }
 
         public void DisableComponent()
         {
+            if (this == null)
+                return;
+            
             enabled = false;
             systemIsActiveInScene = false;
         }
