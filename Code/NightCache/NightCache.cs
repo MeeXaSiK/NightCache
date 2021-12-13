@@ -14,20 +14,22 @@ namespace NTC.Global.Cache
 
         public void EnableComponent()
         {
+            systemIsActiveInScene = true;
+
             if (this == null)
                 return;
-            
+
             enabled = true;
-            systemIsActiveInScene = true;
         }
 
         public void DisableComponent()
         {
+            systemIsActiveInScene = false;
+
             if (this == null)
                 return;
-            
+
             enabled = false;
-            systemIsActiveInScene = false;
         }
     }
 }
