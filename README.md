@@ -1,4 +1,4 @@
-# NightCache 1.2
+# NightCache
 > Fast Update Optimization-Caching Framework for Unity
 
 * Auto-Install optimization fast framework by [**Night Train Code**](https://www.youtube.com/c/NightTrainCode/)
@@ -18,7 +18,7 @@
 * [NightCache 1.1 [Update]](#whats-new-in-nightcache-11)
   * [Enable & Disable Component](#enable-and-disable-component)
 * [NightCache 1.2 [Update]](#whats-new-in-nightcache-12)
-  * [Component Allocation](#component-allocation)
+  * [MonoAllocation](#component-allocation)
   * [NightSugar](#nightsugar-static-class-attached)
   * [GetInfo < TClass >](#getinfot)
   
